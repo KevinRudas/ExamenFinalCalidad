@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<a id="idCrear" class="btn btn-primary float-right" href="/Cuenta/Crear">Crear Cuenta</a>
+
+<table id="IndexTabla" class="table">
+    <thead>
+        <tr>
+            <th> # </th>
+            <th> Nombre</th>
+            <th> Categoria</th>
+            <th> Saldo inicial</th>
+            <th> Gastos</th>
+            <th> Ingresos</th>
+
+        </tr>
+    </thead>
+    <tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td> @item.idCuenta </td>
+            <td> @item.nombre </td>
+            <td> @item.categoria </td>
+            <td> @item.saldoinicial </td>
+
+
+            <td>
+                @foreach (var gastos in item.Gastos)
+                {
+                    <ul>
+                        <li>@gastos.Monto</li>
+                        <li>@gastos.Descripcion</li>
+                        <li>@gastos.Fecha</li>
+                        <hr />
+                    </ul>
+                }
+            </td>
+
+            <td>
+                @foreach (var ingresos in item.Ingresos)
+                {
+                    <ul>
+                        <li>@ingresos.Monto</li>
+                        <li>@ingresos.Descripcion</li>
+                        <li>@ingresos.Fecha</li>
+                        <hr />
+                    </ul>
+                }
+            </td>
+            <td>
+                <a id="idGasto" href="/Gastos/Crear?idCuenta=@item.idCuenta" class="btn btn-success"> Agregar Gasto </a>
+            </td>
+            <td>
+                <a id="idIngresos" href="/Ingresos/Crear?idCuenta=@item.idCuenta" class="btn btn-primary"> Agregar Ingresos </a>
+            </td>
+        </tr>
+    }
+        <tbody>
+    </table>
+    <div id="tablaTarjeta">
+
+    </div>
+
+

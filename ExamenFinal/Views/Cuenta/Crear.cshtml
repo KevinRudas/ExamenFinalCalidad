@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Crear";
+}
+
+<h2>Crear</h2>
+<form action="/Cuenta/Crear" method="post">
+    <div class="form-group">
+        <label>Nombre</label>
+        <input id="idNombre" type="text" class="form-control" name="nombre" placeholder="Ingrese nombre">
+        @Html.ValidationMessage("nombre", new { style = "color:red" })
+        <label>Categoria</label>
+        <select name="categoria" id="idCategoria">
+            <option value="Credito">Credito</option>
+            <option value="Propio">Propio</option>
+        </select>
+        @Html.ValidationMessage("categoria", new { style = "color:red" })
+        <br />
+        <label>Saldo incial</label>
+        <input id="idSaldo" type="text" class="form-control" name="saldoinicial" placeholder="Ingrese saldo inicial">
+        @Html.ValidationMessage("saldoinicial", new { style = "color:red" })
+    </div>
+    
+    <button id="idGuardar" class="btn btn-primary">Guardar</button>
+</form>
